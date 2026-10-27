@@ -148,7 +148,7 @@ class Epavlidis(discord.Client):
         log.info("LLM request: %d messages, max_tokens=%d, last=%r", len(messages), max_tokens, messages[-1]["content"][:120])
         try:
             async with self.session.post(
-                f"{API_BASE}/chat/completions", json=payload, timeout=aiohttp.ClientTimeout(total=60)
+                f"{API_BASE}/chat/completions", json=payload, timeout=aiohttp.ClientTimeout(total=120)
             ) as resp:
                 if resp.status != 200:
                     log.error("LLM API %s: %s", resp.status, (await resp.text())[:300])
