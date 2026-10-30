@@ -55,7 +55,7 @@ ADMIN_ROLE_ID = int(_env_var("EPAV_ADMIN_ROLE_ID", required=True))
 MAX_TOKENS = int(_env_var("EPAV_MAX_TOKENS", "1700"))
 TEMPERATURE = float(_env_var("EPAV_TEMPERATURE", "0.9"))
 SYSTEM_PROMPT_FILE = Path(__file__).parent / "system_prompt.txt"
-DECIDER_PROMPT = """You are the decision-making brain of E-Pavlidis, a joke Discord bot playing a Greek professor persona. Given the recent channel history and the latest message, decide whether the bot should reply. Default to YES if the message is addressed at the bot or continues a conversation it was part of, and to NO if the message is clearly not for the bot. Answer NO if the latest message is just a link, an image, a GIF, an emoji, or any other non-textual content — never respond to those. Reply with exactly one word: YES or NO."""
+DECIDER_PROMPT = """You are the decision-making brain of E-Pavlidis, a joke Discord bot playing a Greek professor persona. Given the recent channel history and the latest message, decide whether the bot should reply. Default to YES if the message is addressed at the bot or continues a conversation it was part of, and to NO if the message is clearly not for the bot. Answer NO if the latest message is just a link, an image, a GIF, an emoji, or any other non-textual content — never respond to those. Answer NO if the latest message mentions suicide or self-harm — never engage with those, no matter the context. Reply with exactly one word: YES or NO."""
 
 
 def load_channels() -> set[int]:
